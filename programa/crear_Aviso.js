@@ -42,7 +42,8 @@ function minutesToSeconds(minutes) {
 
 /***************************************/
 
-const service = "Netflix",
+const service = "PornHub",
+      every = 30, 
       daysToAdd = daysToSeconds(0),
       hoursToAdd = hoursToSeconds(0),
       minutesToAdd = minutesToSeconds(0),
@@ -56,7 +57,7 @@ var idAviso = id(9),
 
 if(timeadded == false){
     addtime = currentDateTimestamp + allSeconds
-    db.set("aviso."+idAviso, {"id": idAviso, "service": service, "endTimestamp": addtime});
+    db.set("aviso."+idAviso, {"id": idAviso, "service": service, "endTimestamp": addtime, "every": every});
     console.log("Time added: " + addtime)
     console.log("Current timestamp: " + currentDateTimestamp)
     timeadded = true

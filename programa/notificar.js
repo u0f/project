@@ -15,6 +15,31 @@ const objectToArray = obj => {
     return res;
  };
 
+ //funcion days to seconds
+function daysToSeconds(days) {
+    return days * 86400
+}
+
+/**
+ * Extra function to generate ID
+ * 
+ */
+
+ function id(x) {
+
+    if(!x) throw Error("No length specified")
+        var length = x,
+            charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
+            retVal = "";
+        for (var i = 0, n = charset.length; i < length; ++i) {
+            retVal += charset.charAt(Math.floor(Math.random() * n));
+        }
+        return retVal;
+    
+}
+
+/***************************************/
+
 (async () => {
 
     const dbReturn = await checkDB(Db, "aviso");
@@ -36,7 +61,16 @@ const objectToArray = obj => {
             if(Db.has("aviso." + info.id)) {
             console.log(arrayInfo)
             console.log("Se te va a renovar la suscripción de " + info.service)
+            if(info.every > 0) {
+                var idAviso = id(9),
+                currentDateTimestamp = Math.floor(new Date().getTime()/1000)
+                Db.delete("aviso." + info.id);
+                Db.set("aviso."+idAviso, {"id": idAviso, "service": info.service, "endTimestamp": currentDateTimestamp + daysToSeconds(info.every), "every": info.every});
+                console.log("Autorenovación cada mes: " + currentDateTimestamp + daysToSeconds(info.every))
+
+            } else if(info.type == 0) {
             Db.delete("aviso." + info.id);
+            } else Db.delete("aviso." + info.id);
             } else;
         }
     }, 0);
