@@ -1,0 +1,36 @@
+{
+    "PSN": {
+        "logo": "https://logo.com/logo.png"
+    },
+    "Netflix": {
+        "logo" : "https://logo.com/logo.png"
+    },
+    "Amazon Prime": {
+        "logo": "https://logo.com/logo.png"
+    },
+    "Hulu": {
+        "logo": "https://logo.com/logo.png"
+    },
+    "Disney+": {
+        "logo": "https://logo.com/logo.png"
+    },
+    "YouTube": {
+        "logo": "https://logo.com/logo.png"
+    },
+    "HBO": {
+        "logo": "https://logo.com/logo.png"
+    },
+    "Crunchyroll": {
+        "logo": "https://logo.com/logo.png"
+    },
+    "Disney XD": {
+        "logo": "https://logo.com/logo.png"
+    },
+    "Nickelodeon": {
+        "logo": "https://logo.com/logo.png"
+    },
+    "Other": {
+        "logo": "https://logo.com/logo.png"
+    }
+
+}
