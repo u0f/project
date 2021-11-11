@@ -21,20 +21,42 @@ function minutesToSeconds(minutes) {
 }
 
 /***************************************/
-const service = "PSN",
+
+/**
+ * Extra function to generate ID
+ * 
+ */
+
+ function id(x) {
+
+    if(!x) throw Error("No length specified")
+        var length = x,
+            charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
+            retVal = "";
+        for (var i = 0, n = charset.length; i < length; ++i) {
+            retVal += charset.charAt(Math.floor(Math.random() * n));
+        }
+        return retVal;
+    
+}
+
+/***************************************/
+
+const service = "Netflix",
       daysToAdd = daysToSeconds(0),
       hoursToAdd = hoursToSeconds(0),
       minutesToAdd = minutesToSeconds(0),
-      secondsToAdd = 30,
+      secondsToAdd = 20,
       allSeconds = daysToAdd + hoursToAdd + minutesToAdd + secondsToAdd
 
-var currentDateTimestamp = Math.floor(new Date().getTime()/1000),
+var idAviso = id(9),
+    currentDateTimestamp = Math.floor(new Date().getTime()/1000),
     timeadded = false,
     addtime;
 
 if(timeadded == false){
     addtime = currentDateTimestamp + allSeconds
-    db.set("aviso." + service, {"service": service, "endTimestamp": addtime});
+    db.set("aviso."+idAviso, {"id": idAviso, "service": service, "endTimestamp": addtime});
     console.log("Time added: " + addtime)
     console.log("Current timestamp: " + currentDateTimestamp)
     timeadded = true

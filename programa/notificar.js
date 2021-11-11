@@ -18,23 +18,29 @@ const objectToArray = obj => {
 (async () => {
 
     const dbReturn = await checkDB(Db, "aviso");
-          arrayInfo = objectToArray(dbReturn)
+    var arrayInfo = objectToArray(dbReturn)
     
-    for(let i=0; i < arrayInfo.length; i++){
-        console.log(arrayInfo[i])
+          console.log(arrayInfo.length)
+    var i = 0
+    for(i; i < arrayInfo.length; i++) {
+
         const info = arrayInfo[i]
-  
+        console.log(info)
+    setInterval( async () => {
+
+        const dbUpdate = await checkDB(Db, "aviso");
+        arrayInfo = objectToArray(dbUpdate)
+
+        if(info.endTimestamp < Math.floor(new Date().getTime()/1000)) {
+
+            if(Db.has("aviso." + info.id)) {
+            console.log(arrayInfo)
+            console.log("Se te va a renovar la suscripción de " + info.service)
+            Db.delete("aviso." + info.id);
+            } else;
+        }
+    }, 0);
+
     }
     
 })();
-
-/*
-        var notified = false
-      while(true == true) {
-
-            if(info.endTimestamp < Math.floor(new Date().getTime()/1000) && notified == false) {
-                console.log("Se te va a renovar la suscripción de " + info.service)
-                notified = true
-            }
-        }
-*/
